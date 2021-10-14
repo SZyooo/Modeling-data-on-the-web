@@ -1,0 +1,35 @@
+{
+	"root": { "description":"This is a very deeply first nested expression, and it evaluates to 12.",		
+		"plus": [{
+				"plus": [{
+						"plus": [{
+								"plus": [{
+										"plus": [{
+												"int": 2
+											},
+											{
+												"int": 2
+											}
+										]
+									},
+									{
+										"int": 2
+									}
+								]
+							},
+							{
+								"int": 2
+							}
+						]
+					},
+					{
+						"int": 2
+					}
+				]
+			},
+			{
+				"int": 2
+			}
+		]
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"root": { "description": "This expression evaluates to 18. It shows how plus should take 2 or more arguments",
+		  "plus":[{
+			"int": 4
+		}, {
+			"int": 5
+		}, {
+			"int": 4
+		}, {
+			"int": 5
+		}]}
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "A schema for expressions, with 2+-ary plus, 2-ary times, 2-ary minus, and integer values",
+   "definitions": {
+   "expression": { 
+   	   "oneOf": [  { "$ref": "#/definitions/plus-expr" },
+	               { "$ref": "#/definitions/times-expr" },
+		       	 { "$ref": "#/definitions/minus-expr" },
+			 { "$ref": "#/definitions/atom-expr" }
+			 ]},
+   "plus-expr":{ "type": "object",
+      "properties": {
+         "description": {    "type": "string"},
+         "plus": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/expression" },
+	       "minItems": 2}},
+	       "required":["plus"]
+	       },
+  "minus-expr":{ "type": "object",
+      "properties": {
+         "description": {    "type": "string"},
+         "minus": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/expression" },
+	       "minItems": 2,
+               "maxItems": 2}}   ,
+	       "required":["minus"]},
+  "times-expr":{ "type": "object",
+      "properties": {
+         "description": {    "type": "string"},
+         "times": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/expression" },
+	       "minItems": 2,
+                 "maxItems": 2,
+		  "additionalItems": false
+		  }},
+	       "required":["times"]
+		  },
+  "atom-expr":{ "type": "object",
+      "properties": {
+         "description": {    "type": "string"},
+         "int": {  "type": "integer"}},
+	       "required":["int"] }},
+ "type": "object",
+  "properties": {
+    "root": { "$ref": "#/definitions/expression" }},
+    "required":["root"]
+  }
+
