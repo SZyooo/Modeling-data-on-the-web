@@ -1,0 +1,19 @@
+{
+	"root": { "description": "This is your first nested expression, and it evaluates to 8. If you have difficulties understanding it, it reads (2*3)+(4-2).",		
+		"plus": [{
+			"times": [{
+				"int": 2
+			}, {
+				"int": 3
+			}]
+		}, {
+			"minus": [{
+				"int": 4
+			}, {
+				"int": 2
+			}]
+		}]
+
+	}
+}
+

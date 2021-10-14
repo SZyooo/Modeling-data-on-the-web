@@ -1,0 +1,59 @@
+{
+	"root": { "description": "This is another super deeply nested expression with mixed operators, and it evaluates to 43.",		
+		  "plus":[{
+				"minus": [{
+						"times": [{
+								"plus": [{
+										"minus": [{
+												"times": [{
+														"plus": [{
+																"int": 2
+															},
+															{
+																"int": 2
+															},
+															{
+																"int": 2
+															}
+														]
+													},
+													{
+														"int": 1
+													}
+												]
+											},
+											{
+												"int": 3
+											}
+										]
+									},
+									{
+										"int": 4
+									}
+								]
+							},
+							{
+								"plus": [{
+										"int": 1
+									},
+									{
+										"int": 2
+									},
+									{
+										"int": 3
+									}
+								]
+							}
+						]
+					},
+					{
+						"int": 2
+					}
+				]
+			},
+			{
+				"int": 3
+			}
+		]
+	}
+}
