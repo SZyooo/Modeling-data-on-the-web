@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "A schema for expressions, with 2+-ary plus, 2-ary times, 2-ary minus, and integer values",
+   "definitions": {
+   "expression": { 
+   	   "oneOf": [  { "$ref": "#/definitions/plus-expr" },
+	                  { "$ref": "#/definitions/times-expr" },
+		       	      { "$ref": "#/definitions/minus-expr" },
+			            { "$ref": "#/definitions/atom-expr" },
+                     { "$ref": "#/definitions/division-expr" }
+			 ]},
+   "string-type":{
+      "type":"string"
+   },
+   "humanreadable-type":{
+      "type":"object",
+      "properties":{
+         "value":{
+            "description":"The result of the expression",
+            "type":"number"
+         },
+         "humanReadableExpression":{
+            "description":"a human-readable form of the (sub-)expression",
+            "type":"string"
+         }
+      },
+      "required":[
+         "value",
+         "humanReadableExpression"
+      ]
+   }  ,     
+   "plus-expr":{ "type": "object",
+      "properties": {
+         "description": {
+               "oneOf": [{"$ref":"#/definitions/string-type"},{"$ref":"#/definitions/humanreadable-type"}]},
+         "plus": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/expression" },
+	       "minItems": 1}},
+	       "required":["plus"]
+	       },
+   "division-expr":{ "type": "object",
+      "properties": {
+         "description": {
+               "oneOf": [{"$ref":"#/definitions/string-type"},{"$ref":"#/definitions/humanreadable-type"}]},
+         "division": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/expression" },
+	       "minItems": 2}},
+	       "required":["division"]
+	       },
+  "minus-expr":{ "type": "object",
+      "properties": {
+         "description": {
+               "oneOf": [{"$ref":"#/definitions/string-type"},{"$ref":"#/definitions/humanreadable-type"}]},
+         "minus": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/expression" },
+	       "minItems": 1,
+               "maxItems": 2}}   ,
+	       "required":["minus"]},
+  "times-expr":{ "type": "object",
+      "properties": {
+         "description": {
+               "oneOf": [{"$ref":"#/definitions/string-type"},{"$ref":"#/definitions/humanreadable-type"}]},
+         "times": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/expression" },
+	       "minItems": 2,
+                 "maxItems": 2,
+		  "additionalItems": false
+		  }},
+	       "required":["times"]
+		  },
+  "atom-expr":{ "type": "object",
+      "properties": {
+         "description": { "type": "string"},
+         "onetype":{
+            "oneOf":[
+                {"type":"integer",
+                   "minimum":-1000,
+                   "maximum":1000},
+                {  "type": "number",
+                   "minimum":-1000,
+                   "maximum":1000}]
+            } 
+         },
+	       "required":["onetype"] }},
+ "type": "object",
+  "properties": {
+    "root": { "$ref": "#/definitions/expression" }},
+    "required":["root"]
+  }
+
